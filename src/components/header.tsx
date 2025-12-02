@@ -1,6 +1,5 @@
 import { Disclosure, DisclosureButton, DisclosurePanel } from '@headlessui/react'
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline'
-import { NavLink } from 'react-router-dom'
 import logo from '@/assets/logo.png'
 import { Button } from '@/components/ui/button'
 
@@ -21,13 +20,9 @@ export default function Header() {
                     <div className="flex-1" />
                     <div className="hidden sm:flex items-center gap-3 pr-2">
                         {nav.map((item) => (
-                            <NavLink key={item.to} to={item.to}>
-                                {({ isActive }) => (
-                                    <Button asChild variant={isActive ? 'navbarActive' : 'navbar'}>
-                                        <a className="px-3 py-1.5">{item.name}</a>
-                                    </Button>
-                                )}
-                            </NavLink>
+                            <Button key={item.to} to={item.to} variant="navbar" className="px-3 py-1.5" activeVariant="navbarActive">
+                                {item.name}
+                            </Button>
                         ))}
                     </div>
                     <div className="sm:hidden ml-2">
@@ -41,13 +36,9 @@ export default function Header() {
                 <DisclosurePanel className="sm:hidden px-4 pb-4">
                     <div className="space-y-2">
                         {nav.map((item) => (
-                            <NavLink key={item.to} to={item.to}>
-                                {({ isActive }) => (
-                                    <Button asChild variant={isActive ? 'navbarActive' : 'navbar'} className="w-full justify-start">
-                                        <a className="w-full block px-3 py-2">{item.name}</a>
-                                    </Button>
-                                )}
-                            </NavLink>
+                            <Button key={item.to} to={item.to} variant="navbar" className="w-full justify-start block px-3 py-2" activeVariant="navbarActive">
+                                {item.name}
+                            </Button>
                         ))}
                     </div>
                 </DisclosurePanel>

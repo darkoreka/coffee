@@ -45,13 +45,34 @@ function Text({
 }: TextProps) {
     const Comp = asChild ? Slot : "div"
 
+    const childrenArray = React.Children.toArray(props.children).filter((child) => {
+        return !(typeof child === 'string' && child.trim() === '')
+    })
+
+    if (asChild) {
+        if (childrenArray.length === 1) {
+            const { children, ...rest } = props as any
+            return (
+                <Slot className={cn(textVariants({ align, variant, className }))} {...rest}>
+                    {childrenArray[0]}
+                </Slot>
+            )
+        }
+
+        if (childrenArray.length > 1) {
+            console.warn('Text asChild received multiple children — falling back to wrapper element.')
+        }
+    }
+
     return (
         <Comp className={cn(textVariants({ align, variant, className }))} {...props}>
+            {props.children}
+
             {title && (
                 <h1 style={
                     { fontFamily: 'Dancing Script' }
                 }
-                className="text-6xl md:text-8xl font-bold text-[#F8E4BF]">{title}</h1>
+                    className="text-6xl md:text-8xl font-bold text-[#F8E4BF]">{title}</h1>
             )}
 
             {description1 && (
