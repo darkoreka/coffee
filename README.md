@@ -71,3 +71,37 @@ export default defineConfig([
   },
 ])
 ```
+
+## Running the frontend:
+git clone https://github.com/darkoreka/coffee.git
+npm install
+npm run dev
+
+## Frontend pages:
+/ - Home
+/reviews - Reviews
+/showroom - ShowRoom - where u can try the components
+
+## Running the backend:
+git clone https://github.com/tonymihut/rw-api.git
+npm install
+npm start
+
+By default the server listens on http://localhost:8055.
+
+Endpoints
+GET /products
+Returns the list of products with embedded reviews.
+
+POST /products/:productId/reviews
+Adds a review to a product. Body parameters:
+
+Field	Type	Required	Notes
+text	string	yes	Review content; trimmed before saving.
+rating	number	yes	Integer 1-5.
+Sample request:
+
+curl -X POST http://localhost:8055/products/pour-over-kit/reviews \
+  -H "Content-Type: application/json" \
+  -d '{"text": "Great bloom control.", "rating": 4}'
+Successful responses return the updated product along with all reviews. Errors use conventional HTTP status codes (400 for validation issues, 404 if the product ID does not exist, 500 for server errors).
