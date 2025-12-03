@@ -4,14 +4,14 @@ import { Text } from "@/components/ui/text";
 
 export default function Hero() {
     return (
-        <div className="min-h-screen flex flex-col md:flex-row">
-            <div className="w-full md:w-1/2 flex flex-col justify-start items-center mt-30 px-6 py-12">
+        <div className="flex flex-col md:flex-row">
+            <div className="w-full md:w-1/2 flex flex-col justify-start items-center mt-20 px-6 py-2">
                 <Text
-                    className="flex flex-col text-center md:text-left"
+                    className="flex flex-col text-center"
                     title={"Reka's Coffee"}
                     description1={"Today's good mood is sponsored by coffee search for your coffee now"}
                 />
-                <div className="flex flex-row justify-center md:justify-start mt-8 space-x-4">
+                <div className="flex flex-row justify-center mt-8 space-x-4">
                     <Button variant="default" size="lg">
                         Shop Now
                     </Button>
