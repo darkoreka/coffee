@@ -9,7 +9,7 @@ export default function Footer() {
             style={{ backgroundImage: `url(${footerBg})` }}
         >
             <div className="bg-[#2b1a14]/80">
-                <div className="max-w-7xl mx-auto px-6 md:px-10 py-10 space-y-8">
+                <div className="w-full mx-auto px-6 md:px-10 py-10 space-y-8">
 
                     <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-5 justify-center">
                         <div className="hidden md:flex items-center md:items-start justify-center md:justify-start">
