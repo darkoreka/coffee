@@ -25,9 +25,26 @@ const textVariants = cva(
     }
 )
 
+const titleVariants = cva(
+    "font-bold text-[#F8E4BF]",
+    {
+        variants: {
+            size: {
+                sm: "text-xl md:text-2xl",
+                default: "text-6xl md:text-8xl",
+                lg: "text-7xl md:text-9xl",
+            },
+        },
+        defaultVariants: {
+            size: "default",
+        },
+    }
+)
+
 type TextProps = React.HTMLAttributes<HTMLDivElement> &
     VariantProps<typeof textVariants> & {
         title?: React.ReactNode
+        titleSize?: VariantProps<typeof titleVariants>["size"]
         description1?: React.ReactNode
         description2?: React.ReactNode
         asChild?: boolean
@@ -36,6 +53,7 @@ type TextProps = React.HTMLAttributes<HTMLDivElement> &
 function Text({
     className,
     title,
+    titleSize = "default",
     description1,
     description2,
     align,
@@ -69,10 +87,10 @@ function Text({
             {props.children}
 
             {title && (
-                <h1 style={
-                    { fontFamily: 'Dancing Script' }
-                }
-                    className="text-6xl md:text-8xl font-bold text-[#F8E4BF]">{title}</h1>
+                <h1 style={{
+                    fontFamily: 'Dancing Script'
+                }}
+                    className={cn(titleVariants({ size: titleSize }))}>{title}</h1>
             )}
 
             {description1 && (
@@ -86,6 +104,6 @@ function Text({
     )
 }
 
-export { Text, textVariants }
+export { Text, textVariants, titleVariants }
 
 export default Text
