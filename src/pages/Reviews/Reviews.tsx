@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { fetchProducts, type Product } from "@/lib/api";
 import { Text } from "@/components/ui/text";
-import ReviewCard from "@/pages/Reviews/components/review-card";
 import ReviewSearch from "@/pages/Reviews/components/review-search";
+import ProductReviews from "@/pages/Reviews/components/product-reviews";
 
 export default function Reviews() {
     const [products, setProducts] = useState<Product[]>([]);
@@ -73,37 +73,9 @@ export default function Reviews() {
 
                 {searchProducts.length > 0 ? (
                     <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                        {searchProducts.map((product) => {
-                            const reviews = product.reviews ?? [];
-                            const hasReviews = reviews.length > 0;
-
-                            return (
-                                <div
-                                    key={product.id}
-                                    className="bg-[#2D2220] rounded-xl p-6 border border-[#533629] hover:border-[#F8E4BF] transition-colors"
-                                >
-                                    <div className="mb-6">
-                                        <Text
-                                            className="flex flex-col text-center md:text-left"
-                                            titleSize="sm"
-                                            title={product.name}
-                                            description1={product.description}>
-                                        </Text>
-                                    </div>
-
-                                    <div className="space-y-4">
-                                        {hasReviews ? (
-                                            reviews.map((review) => (
-                                                <ReviewCard key={review.id} review={review} />
-                                            ))
-                                        ) : (
-                                            <p className="text-sm text-[#9A816E]">No reviews yet</p>
-                                        )}
-                                    </div>
-
-                                </div>
-                            );
-                        })}
+                        {searchProducts.map((product) => (
+                            <ProductReviews key={product.id} product={product} />
+                        ))}
                     </div>
                 ) : (
                     <div className="text-center py-12">
