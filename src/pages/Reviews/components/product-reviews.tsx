@@ -87,6 +87,7 @@ export default function ProductReviews({ product }: ProductReviewsProps) {
                         title={product.name}
                         description1={product.description}>
                     </Text>
+                    <img src={product.image} alt={product.name} className="mt-4 rounded-lg mx-auto md:mx-0 max-h-48 object-contain" />
                 </div>
 
                 <div className="space-y-4">
