@@ -53,21 +53,26 @@ function Button({
     })
 
     if (to) {
-        const { children, ...rest } = props as any
-
+        const { children, ...rest } = props as any;
         return (
-            <NavLink to={to} {...rest}>
-                {({ isActive }) => (
-                    <a
-                        className={cn(
-                            buttonVariants({ variant: isActive ? (activeVariant ?? variant ?? 'navbarActive') : (variant ?? 'navbar'), size, className })
-                        )}
-                    >
-                        {props.children}
-                    </a>
-                )}
+            <NavLink
+                to={to}
+                {...rest}
+                className={({ isActive }) =>
+                    cn(
+                        buttonVariants({
+                            variant: isActive
+                                ? activeVariant ?? variant ?? "navbarActive"
+                                : variant ?? "navbar",
+                            size,
+                            className,
+                        })
+                    )
+                }
+            >
+                {children}
             </NavLink>
-        )
+        );
     }
 
     if (asChild) {
@@ -85,7 +90,7 @@ function Button({
         }
 
         if (childrenArray.length > 1) {
-            console.warn('Button asChild received multiple children — falling back to button element.')
+            console.warn('Button asChild received multiple children falling back to button element.')
         }
 
     }

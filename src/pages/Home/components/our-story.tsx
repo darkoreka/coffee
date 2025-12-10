@@ -13,7 +13,7 @@ export default function OurStory() {
                     alt="Our Story"
                     className="hidden md:block md:w-1/2 object-contain md:relative md:-translate-x-20 md:translate-y-15 md:-mr-12 md:z-20"
                 />
-                <Text description1="Reka is an online coffee store that offers the widest selection of specialty coffees and teas from around the world. From medium-dark roast single origin to flavored espresso beans, they offer a variety of ethically sourced products to tantalize any customer’s palate.">
+                <Text description1="Reka is an online coffee store that offers the widest selection of specialty coffees and teas from around the world. From medium-dark roast single origin to flavored espresso beans, they offer a variety of ethically sourced products to tantalize any customers palate.">
                 </Text>
 
             </div>

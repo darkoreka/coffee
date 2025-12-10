@@ -1,5 +1,6 @@
 import { Button } from "@/components/ui/button";
 import { Text } from "@/components/ui/text";
+import heroImage from "@/assets/Hero Img .png";
 
 
 export default function Hero() {
@@ -23,7 +24,7 @@ export default function Hero() {
 
             <div className="w-full md:w-1/2 flex items-start justify-center px-6 py-8">
                 <img
-                    src="/src/assets/Hero Img .png"
+                    src={heroImage}
                     alt="Hero"
                     className="hidden md:block max-w-[700px] object-contain z-0 -mt-8 md:-mt-16"
                 />

@@ -78,7 +78,7 @@ function Text({
         }
 
         if (childrenArray.length > 1) {
-            console.warn('Text asChild received multiple children — falling back to wrapper element.')
+            console.warn('Text asChild received multiple children falling back to wrapper element.')
         }
     }
 

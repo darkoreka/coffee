@@ -28,10 +28,14 @@ export default function Reviews() {
         loadProducts();
     }, []);
 
+    const term = searchTerm.trim().toLowerCase();
+
     const searchProducts = products.filter((product) => {
-        if (!searchTerm) return true;
-        return product.name.includes(searchTerm) ||
-            product.description.includes(searchTerm)
+        if (!term) return true;
+        return (
+            product.name.toLowerCase().includes(term) ||
+            product.description.toLowerCase().includes(term)
+        );
     });
 
     if (loading) {

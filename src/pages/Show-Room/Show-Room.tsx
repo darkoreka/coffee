@@ -11,7 +11,7 @@ const sampleReview: Review = {
     createdAt: new Date().toISOString(),
 };
 
-export default function ShowRomm() {
+export default function ShowRoom() {
     const [navActive, setNavActive] = useState(false)
     return (
         <div className="flex min-h-svh flex-col items-center justify-center gap-8">
