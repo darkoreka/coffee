@@ -60,6 +60,8 @@ export default function ReviewDetails() {
 
         const missingRating = !rating.trim();
         const missingText = !text.trim();
+        const charCount = text.trim().length;
+        const MAX_CHARS = 500;
 
         if (missingRating && missingText) {
             setTopError("Please add a rating and review text.");
@@ -75,6 +77,12 @@ export default function ReviewDetails() {
 
         if (missingText) {
             setTextError("Please add your review.");
+            setSubmitting(false);
+            return;
+        }
+
+        if (charCount > MAX_CHARS) {
+            setTextError(`Reviews must be ${MAX_CHARS} characters or fewer. Current: ${charCount}.`);
             setSubmitting(false);
             return;
         }

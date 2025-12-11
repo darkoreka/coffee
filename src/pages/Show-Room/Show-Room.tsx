@@ -24,6 +24,7 @@ export default function ShowRoom() {
             >
                 Click me
             </Button>
+            <Button variant="ghost">Click me</Button>
             <Text
                 className="flex flex-col text-center md:text-left"
                 title={"Customer Reviews"}

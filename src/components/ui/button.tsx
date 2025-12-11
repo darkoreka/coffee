@@ -15,6 +15,7 @@ const buttonVariants = cva(
                     "rounded-full bg-primary shadow-xs text-secondary hover:bg-primary/50 ring ring-yellow-400",
                 navbar: "bg-none text-secondary",
                 navbarActive: "rounded-b-lg bg-primary shadow-xs text-secondary",
+                ghost: "bg-transparent ",
             },
             size: {
                 default: "h-11 px-5 py-3 has-[>svg]:px-4",
