@@ -1,6 +1,7 @@
 
 import { useEffect, useState } from "react";
 import { useParams, Link } from "react-router-dom";
+import { Star } from "lucide-react";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -109,7 +110,17 @@ export default function ReviewDetails() {
         );
     }
 
-    const hasReviews = product.reviews?.length > 0;
+    const reviewCount = product.reviews?.length ?? 0;
+    const hasReviews = reviewCount > 0;
+    const averageRating = hasReviews
+        ? Number(
+            (
+                product.reviews.reduce((total, review) => total + review.rating, 0) /
+                reviewCount
+            ).toFixed(1)
+        )
+        : null;
+    const filledStars = averageRating ? Math.round(averageRating) : 0;
 
     return (
         <div className="w-full py-16 md:py-24 px-4">
@@ -127,6 +138,31 @@ export default function ReviewDetails() {
                             title={product.name}
                             description1={product.description}
                         />
+                        {hasReviews ? (
+                            <div className="mt-4 flex items-center gap-3 text-sm text-[#F8E4BF]">
+                                <div className="flex gap-1">
+                                    {Array.from({ length: 5 }).map((_, i) => (
+                                        <Star
+                                            key={i}
+                                            size={18}
+                                            className={
+                                                i < filledStars
+                                                    ? "fill-[#F8E4BF] text-[#F8E4BF]"
+                                                    : "text-[#533629]"
+                                            }
+                                        />
+                                    ))}
+                                </div>
+                                <span className="font-semibold">
+                                    {(averageRating?.toFixed(1) ?? "0.0")}/5
+                                </span>
+                                <span className="text-[#9A816E]">
+                                    ({reviewCount} review{reviewCount === 1 ? "" : "s"})
+                                </span>
+                            </div>
+                        ) : (
+                            <p className="mt-4 text-sm text-[#9A816E]">No ratings yet</p>
+                        )}
                     </div>
                 </div>
 

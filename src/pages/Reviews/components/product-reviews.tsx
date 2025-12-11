@@ -1,4 +1,5 @@
 import { useEffect, useState } from "react";
+import { Star } from "lucide-react";
 import { Text } from "@/components/ui/text";
 import ReviewCard from "@/pages/Reviews/components/review-card";
 import type { Product } from "@/lib/api";
@@ -11,6 +12,17 @@ interface ProductReviewsProps {
 export default function ProductReviews({ product }: ProductReviewsProps) {
     const [reviews, setReviews] = useState(product.reviews ?? []);
     const hasReviews = reviews.length > 0;
+    const reviewCount = reviews.length;
+
+    const averageRating = hasReviews
+        ? Number(
+            (
+                reviews.reduce((total, review) => total + review.rating, 0) /
+                reviewCount
+            ).toFixed(1)
+        )
+        : null;
+    const filledStars = averageRating ? Math.round(averageRating) : 0;
 
     useEffect(() => {
         setReviews(product.reviews ?? []);
@@ -30,6 +42,30 @@ export default function ProductReviews({ product }: ProductReviewsProps) {
                 </div>
 
                 <div className="space-y-4">
+                    {hasReviews && (
+                        <div className="flex items-center gap-2 text-sm text-[#F8E4BF]">
+                            <div className="flex gap-1">
+                                {Array.from({ length: 5 }).map((_, i) => (
+                                    <Star
+                                        key={i}
+                                        size={16}
+                                        className={
+                                            i < filledStars
+                                                ? "fill-[#F8E4BF] text-[#F8E4BF]"
+                                                : "text-[#533629]"
+                                        }
+                                    />
+                                ))}
+                            </div>
+                            <span className="font-semibold">
+                                {(averageRating?.toFixed(1) ?? "0.0")}/5
+                            </span>
+                            <span className="text-[#9A816E]">
+                                ({reviewCount} review{reviewCount === 1 ? "" : "s"})
+                            </span>
+                        </div>
+                    )}
+
                     {hasReviews ? (
                         reviews.map((review) => (
                             <ReviewCard key={review.id} review={review} />
