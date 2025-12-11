@@ -6,7 +6,7 @@ import heroImage from "@/assets/Hero Img .png";
 export default function Hero() {
     return (
         <div className="flex flex-col md:flex-row">
-            <div className="w-full md:w-1/2 flex flex-col justify-start items-center mt-20 px-6 py-2">
+            <div className="w-full md:w-1/2 flex flex-col justify-center items-center mt-20 px-6 py-2">
                 <Text
                     className="flex flex-col text-center"
                     title={"Reka's Coffee"}
@@ -22,11 +22,11 @@ export default function Hero() {
                 </div>
             </div>
 
-            <div className="w-full md:w-1/2 flex items-start justify-center px-6 py-8">
+            <div className="w-full md:w-1/2 flex items-center justify-center px-6 py-12">
                 <img
                     src={heroImage}
                     alt="Hero"
-                    className="hidden md:block max-w-[700px] object-contain z-0 -mt-8 md:-mt-16"
+                    className="hidden md:block max-w-[700px]"
                 />
 
             </div>

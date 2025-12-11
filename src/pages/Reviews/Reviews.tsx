@@ -54,7 +54,7 @@ export default function Reviews() {
                 <div className="max-w-7xl mx-auto text-center">
                     <p className="text-lg text-red-400">Error: {error}</p>
                     <p className="text-sm text-gray-400 mt-2">
-                        Make sure the backend server is running on http://localhost:8055
+                        Reviews not found. Please try again later.
                     </p>
                 </div>
             </div>

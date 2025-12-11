@@ -11,16 +11,16 @@ const nav = [
 
 export default function Header() {
     return (
-        <Disclosure as="nav" className="w-full bg-primary-900/60 backdrop-blur z-40">
+        <Disclosure as="nav" className="top-0 left-0 right-0 w-full bg-primary-900/60 backdrop-blur z-40">
             <div className="w-full px-4">
-                <div className="mx-auto max-w-full flex items-center py-3 md:py-4">
+                <div className="max-w-full flex items-start">
                     <div className="flex items-center">
                         <img src={logo} alt="logo" className="h-18 w-auto" />
                     </div>
                     <div className="flex-1" />
                     <div className="hidden sm:flex items-center gap-3 pr-2">
                         {nav.map((item) => (
-                            <Button key={item.to} to={item.to} variant="navbar" className="px-3 py-1.5" activeVariant="navbarActive">
+                            <Button key={item.to} to={item.to} variant="navbar" className="px-3 py-1.5 h-16" activeVariant="navbarActive">
                                 {item.name}
                             </Button>
                         ))}
