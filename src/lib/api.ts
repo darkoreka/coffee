@@ -16,6 +16,7 @@ export interface Product {
     reviews: Review[];
 }
 
+
 // Get all
 export async function fetchProducts(): Promise<Product[]> {
     try {
